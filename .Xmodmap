@@ -1,0 +1,19 @@
+
+! Clear our key for remapping
+clear lock
+! For Alt
+clear mod1
+! For Capslock
+clear mod3
+! For Mode_switch
+clear mod5
+
+remove mod4 = Hyper_L
+
+keycode 66 = Hyper_L Hyper_L Caps_Lock
+
+keycode 64 = Alt_L Mode_switch
+keycode 108 = Alt_R Mode_switch
+
+add mod3 = Hyper_L
+add mod1 = Alt_L Alt_R Mode_switch

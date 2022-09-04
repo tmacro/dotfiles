@@ -1,0 +1,230 @@
+[colors]
+background = #393E40
+background-alt = #222
+
+foreground = #9BEAF2
+foreground-alt = #03A6A6
+
+primary = #04D98B
+secondary = #04BF9D
+alert = #F27979
+
+[bar/main-left]
+monitor = ${env:MONITOR:HDMI-1}
+width = 15%
+height = 45
+fixed-center = True
+offset-x = 20
+offset-y = 15
+modules-left = i3
+override-redirect = true
+wm-restack = i3 
+margin-bottom = 25
+font-0 = "Share Tech Mono:size=18;4"
+font-1 = "Unifont:size=6;-3"
+background = ${colors.background}
+
+[bar/main-right]
+monitor = ${env:MONITOR:HDMI-1}
+width = 20%
+height = 45
+fixed-center = True
+offset-x = 80%:-20
+offset-y = 15
+modules-right = date
+modules-center = cpu memory
+modules-left = pulseaudio
+override-redirect = true
+wm-restack = i3 
+margin-bottom = 25
+font-0 = "Share Tech Mono:size=18;4"
+font-1 = "Unifont:size=18;-2"
+font-2 = "Unifont:size=18;4"
+font-3 = "Unifont:size=18;6"
+font-4 = "Font Awesome 5 Free Solid:style=Solid:size=16;3"
+background = ${colors.background}
+
+[bar/tray]
+monitor = ${env:MONITOR:HDMI-1}
+width = 3%
+height = 45
+offset-x = 77%:-40
+offset-y = 15
+override-redirect = true
+wm-restack = i3 
+margin-bottom = 25
+modules-right=placeholder
+tray-position = center
+tray-detached = False
+; Tray icon max size
+tray-maxsize = 24
+tray-background = ${root.background}
+; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+tray-offset-x = 0
+tray-offset-y = 0
+; Pad the sides of each tray icon
+tray-padding = 0
+; Scale factor for tray clients
+tray-scale = 1.0
+background = ${colors.background}
+
+[bar/secondary-left]
+monitor = ${env:MONITOR:HDMI-1}
+width = 15%
+height = 25
+fixed-center = True
+offset-x = 20
+offset-y = 15
+modules-left = i3
+override-redirect = true
+wm-restack = i3 
+margin-bottom = 25
+font-0 = "Share Tech Mono:size=13;3"
+font-1 = "Unifont:size=6;-3"
+background = ${colors.background}
+
+[module/placeholder]
+type = custom/text
+content = " "
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.primary}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-coreload>
+format-foreground = #FFF
+format-padding = 1
+
+label = 
+label-font = 5
+ramp-coreload-spacing = 0
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #FFF
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #FFF
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = ${colors.foreground}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = ${colors.foreground}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = ${colors.foreground-alt}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = ${colors.foreground-alt}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = ${colors.alert}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = ${colors.alert}
+
+[module/memory]
+type = internal/memory
+
+format = <label> <bar-used>
+format-padding = 1
+format-background = ${colors.background}
+format-foreground = #FFF
+
+label = 
+label-font = 5
+
+bar-used-width = 8
+bar-used-indicator = |
+bar-used-indicator-font = 3
+bar-used-indicator-foreground = #FFF
+bar-used-fill = ─
+bar-used-fill-font = 4
+bar-used-fill-foreground = ${colors.foreground}
+bar-used-empty = ─
+bar-used-empty-font = 4
+bar-used-empty-foreground = ${colors.background-alt}
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+label = %date% %time%
+format-padding = 1
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %m/%d
+
+; Optional time format
+time = %I:%M:%S
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+format-volume-padding = 1
+interval = 5
+format-volume = <label-volume> <bar-volume>
+format-muted = ""
+label-muted-font = 5
+format-muted-padding = 1
+
+label-volume = 
+label-volume-font = 5
+
+bar-volume-width = 8
+bar-volume-indicator = |
+bar-volume-indicator-font = 3
+bar-volume-indicator-foreground = #FFF
+bar-volume-fill = ─
+bar-volume-fill-font = 4
+bar-volume-fill-foreground = ${colors.foreground}
+bar-volume-empty = ─
+bar-volume-empty-font = 4
+bar-volume-empty-foreground = ${colors.background-alt}

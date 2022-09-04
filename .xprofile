@@ -1,0 +1,40 @@
+#/* merge setting in Xresources */
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+
+# Scaling for Firefox
+# needs `layout.css.devPixelsPerPx` set to 2 in about:config
+# export GDK_DPI_SCALE=1.5
+
+# Set background
+feh --bg-scale ~/.backpack/background.png
+
+#~/.local/bin/detect-docked.sh || ~/.config/polybar/launch.sh
+#~/.local/bin/detect-docked.sh && ~/.config/polybar/launch-docked.sh
+
+# TODO move to systemd units
+#/* start urxvt daemon */
+urxvtd -q -f -o
+
+# Start barrier daemon
+#barrier &
+
+#/* start blueman-applet in background */
+# blueman-applet &
+
+blueberry-tray
+
+#/* start lockscreen */
+#/* ds xautolock -locker slock -nowlocker slock */
+
+# Configure Monitors
+# Secondary - HDMI left of main DP-4
+# xrandr --output DisplayPort-3 --primary --mode 3840x2160 --pos 1920x0 --output HDMI-A-1 --mode 1920x1080 --pos 0x0
+
+#~/.local/bin/detect-docked.sh && xrandr --output DP-1-2 --primary --mode 2560x1440 --output eDP-1 --left-of DP-1-2
+
+# Start remapd
+# /home/$(whoami)/.bin/remapd -d 00:18:00:3D:F3:D5 2>&1>/tmp/remapd &
+
+/usr/bin/dunst &

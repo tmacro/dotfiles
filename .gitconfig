@@ -1,0 +1,5 @@
+[user]
+	email = mail@tmacs.space
+	name = Taylor McKinnon
+[init]
+	defaultBranch = trunk

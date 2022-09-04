@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+git ls-files '*.js' | xargs grep -Hn '\.only'
+
+STATUS=$?
+if [ $STATUS -eq 0 ]; then
+	echo "Found .only, preventing push"
+	exit 1
+fi

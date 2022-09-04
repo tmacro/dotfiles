@@ -1,0 +1,7 @@
+_nvm*.fish
+fish_plugins
+fish_variables
+conf.d/nvm.fish
+completions/
+functions/nvm.fish
+functions/fisher.fish

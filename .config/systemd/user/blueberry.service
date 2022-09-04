@@ -1,0 +1,8 @@
+[Unit]
+Description=Bluetooth Tray Daemon
+
+[Service]
+ExecStart=/usr/bin/blueberry
+
+[Install]
+WantedBy=default.target
