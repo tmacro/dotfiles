@@ -16,7 +16,7 @@ if test -z "$__backpack_env"
 
 	# Todays scratch dir and notes file
 	set -x TD (command today dir show)
-	set -x TN (command today notes show)
+	set -x TN (command today note show)
 
 	# Set sentinel
 	set -x $__backpack_env "1"
