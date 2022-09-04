@@ -1,38 +1,34 @@
 !---------------------------------------------urxvtc options
-! Use the specified colour as the windows background colour [default White]; option -bg.
- URxvt*background: black
-
-! Use the specified colour as the windows foreground colour [default Black]; option -fg.
- URxvt*foreground: grey
-
-! do not scroll with output
+! Do not scroll with output
 URxvt*scrollTtyOutput: false
 
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
 URxvt*scrollWithBuffer: true
 
-! scroll back to the bottom on keypress
+! Scroll back to the bottom on key press
 URxvt*scrollTtyKeypress: true
 
-! scrollbar style - rxvt (default), plain (most compact), next, or xterm
-URxvt.scrollstyle: plain
-
-!Enable scrollbar default: true
 URxvt.scrollBar: false
 
 
-!Set cursor
+! Set cursor
 Xcursor.theme: Numix-HIDPI
 Xcursor.size: 30
-!Set scrollback buffer size
+
+! Set scrollback buffer size
 URxvt.saveLine: 100000
 
+! Set font
 URxvt.font: xft:IBM Plex Mono:size=11:antialias=true
+
+! Enable resize ext
 URxvt.perl-ext-common:  resize-font
 
-Xft.dpi: 192
-! Colors for srcery vim theme
-! special
+! Set DPI for High DPI screens
+! Multiples of 96
+!Xft.dpi: 192
+
+! Colors from srcery vim theme
 *.foreground:   #fce8c3
 *.background:   #1c1b19
 *.cursorColor:  #fce8c3

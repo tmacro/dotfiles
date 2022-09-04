@@ -3,5 +3,10 @@ function td --description 'Daily scratch directory manager'
         cd (command today dir show)
         return
     end
-    command td $argv    
+    if test (count $argv) -eq 1 && string match --quiet --regex '^\-?\d+' -- "$argv";
+        cd (command today dir show $argv)
+        return
+    end
+
+    command today dir show $argv
 end

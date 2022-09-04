@@ -11,45 +11,44 @@ alert = #F27979
 
 [bar/main-left]
 monitor = ${env:MONITOR:HDMI-1}
-width = 15%
-height = 45
+width = 25%
+height = 60
 fixed-center = True
-offset-x = 20
-offset-y = 15
+offset-x = 10
+offset-y = 10
 modules-left = i3
 override-redirect = true
 wm-restack = i3 
 margin-bottom = 25
-font-0 = "Share Tech Mono:size=18;4"
-font-1 = "Unifont:size=6;-3"
+font-0 = "Share Tech Mono:size=26;6"
 background = ${colors.background}
 
 [bar/main-right]
 monitor = ${env:MONITOR:HDMI-1}
-width = 20%
-height = 45
-fixed-center = True
-offset-x = 80%:-20
-offset-y = 15
-modules-right = date
-modules-center = cpu memory
-modules-left = pulseaudio
+width = 32.9%
+height = 60
+fixed-center = False
+offset-x = 67.1%:-10
+offset-y = 10
+modules-right = memory cpu placeholder cpu-temp placeholder battery date
+#modules-center = cpu-temp cpu memory
+modules-left = placeholder pulseaudio
 override-redirect = true
 wm-restack = i3 
 margin-bottom = 25
-font-0 = "Share Tech Mono:size=18;4"
+font-0 = "Share Tech Mono:size=26;4"
 font-1 = "Unifont:size=18;-2"
 font-2 = "Unifont:size=18;4"
 font-3 = "Unifont:size=18;6"
-font-4 = "Font Awesome 5 Free Solid:style=Solid:size=16;3"
+font-4 = "Font Awesome 5 Free Solid:style=Solid:size=26;3"
 background = ${colors.background}
 
 [bar/tray]
 monitor = ${env:MONITOR:HDMI-1}
 width = 3%
-height = 45
-offset-x = 77%:-40
-offset-y = 15
+height = 60
+offset-x = 63%:0
+offset-y = 10
 override-redirect = true
 wm-restack = i3 
 margin-bottom = 25
@@ -57,7 +56,7 @@ modules-right=placeholder
 tray-position = center
 tray-detached = False
 ; Tray icon max size
-tray-maxsize = 24
+tray-maxsize = 46
 tray-background = ${root.background}
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 tray-offset-x = 0
@@ -71,16 +70,16 @@ background = ${colors.background}
 [bar/secondary-left]
 monitor = ${env:MONITOR:HDMI-1}
 width = 15%
-height = 25
+height = 60
 fixed-center = True
-offset-x = 20
-offset-y = 15
+offset-x = 10
+offset-y = 10
 modules-left = i3
 override-redirect = true
 wm-restack = i3 
 margin-bottom = 25
-font-0 = "Share Tech Mono:size=13;3"
-font-1 = "Unifont:size=6;-3"
+font-0 = "Share Tech Mono:size=28;3"
+font-1 = "Unifont:size=18;-3"
 background = ${colors.background}
 
 [module/placeholder]
@@ -228,3 +227,17 @@ bar-volume-fill-foreground = ${colors.foreground}
 bar-volume-empty = ─
 bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.background-alt}
+
+[module/battery]
+type=internal/battery
+
+battery = BAT0
+adapter = AC
+time-format = %H:%M
+label-charging = %time% +%percentage%%
+label-discharging = %time% -%percentage%%
+
+[module/cpu-temp]
+type = custom/script
+exec = ~/.local/bin/cpu-temp.sh
+interval = 1
