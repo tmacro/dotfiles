@@ -13,20 +13,20 @@ URxvt.scrollBar: false
 
 ! Set cursor
 Xcursor.theme: Numix-HIDPI
-Xcursor.size: 30
+Xcursor.size: 16
 
 ! Set scrollback buffer size
 URxvt.saveLine: 100000
 
 ! Set font
-URxvt.font: xft:IBM Plex Mono:size=11:antialias=true
+URxvt.font: xft:IBM Plex Mono:size=14:antialias=true
 
 ! Enable resize ext
 URxvt.perl-ext-common:  resize-font
 
 ! Set DPI for High DPI screens
 ! Multiples of 96
-!Xft.dpi: 192
+! Xft.dpi: 192
 
 ! Colors from srcery vim theme
 *.foreground:   #fce8c3

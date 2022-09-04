@@ -9,7 +9,7 @@ feh --bg-scale ~/.backpack/background.png
 
 # Start urxvt daemon
 # TODO move to systemd units
-# urxvtd -q -f -o
+urxvtd -q -f -o
 
 # Start bluetooth tray daemon
 # blueberry-tray
