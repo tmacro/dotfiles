@@ -1,18 +1,11 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-killall -q polybar
+connected_mon="$(xrandr | grep -c '\sconnected')"
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
-# Launch bar1 and bar2
-MONITOR="$MON_PRIMARY" polybar main-left &
-MONITOR="$MON_PRIMARY" polybar main-right &
-MONITOR="$MON_PRIMARY" polybar tray &
-
-if [ -n "$MON_SECONDARY" ]; then
-MONITOR="$MON_SECONDARY" polybar secondary-left &
+if [ "$connected_mon" == "1" ]; then
+    echo "Launching mobile bars..."
+    bash $HOME/.config/polybar/launch-mobile.sh
+else
+    echo "Launching docked bars..."
+    bash $HOME/.config/polybar/launch-docked.sh
 fi
-
-echo "Bars launched..."

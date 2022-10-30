@@ -6,12 +6,14 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-MONITOR="$MON_PRIMARY_DOCKED" polybar main-left &
-MONITOR="$MON_PRIMARY_DOCKED" polybar main-right &
-MONITOR="$MON_PRIMARY_DOCKED" polybar tray &
+MONITOR="$MON_PRIMARY_DOCKED" polybar primary-docked -c ~/.config/polybar/config.ini &
 
 if [ -n "$MON_SECONDARY_DOCKED" ]; then
-    MONITOR="$MON_SECONDARY_DOCKED" polybar secondary-left &
+    MONITOR="$MON_SECONDARY_DOCKED" polybar -c ~/.config/polybar/config.ini secondary-docked &
+fi
+
+if [ -n "$MON_BUILTIN" ]; then
+    MONITOR="$MON_BUILTIN" polybar -c ~/.config/polybar/config.ini laptop-docked &
 fi
 
 echo "Bars launched..."
