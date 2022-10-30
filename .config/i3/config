@@ -73,18 +73,7 @@ bindsym $Meta+k kill
 bindsym KP_Enter exec urxvtc
 # start uLauncher
 
-# start dmenu (a program launcher)
-# bindsym Mod1+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
-# bindsym $Meta+$left focus left
-# bindsym $Meta+$down focus down
-# bindsym $Meta+$up focus up
-# bindsym $Meta+$right focus right
+bindsym $Meta+space exec --no-startup-id i3-dmenu-desktop
 
 # alternatively, you can use the cursor keys:
 bindsym $Meta+Left focus left
@@ -180,12 +169,6 @@ bindsym $Meta+s workspace $wssecondary
 
 # Secondary is a permanent workspace for a second monitor
 workspace "Secondary" output HDMI-A-1
-assign [class="^URxvt$" instance="^weatherboard$"] "Secondary"
-assign [class="^URxvt$" instance="^moonboard$"] "Secondary"
-assign [class="^URxvt$" instance="^htop-sec$"] "Secondary"
-exec --no-startup-id PATH=~/.bin $PATH urxvtc -name weatherboard -e ~/.bin/weatherboard
-exec --no-startup-id PATH=~/.bin $PATH urxvtc -name moonboard -e moonboard
-exec --no-startup-id urxvtc -name htop-sec -e htop
 
 # move focused container to workspace
 bindsym $Meta+$Mod+1 move container to workspace $ws1
