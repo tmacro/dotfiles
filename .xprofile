@@ -15,7 +15,10 @@ urxvtd -q -f -o
 # blueberry-tray
 
 # Configure Monitors
+export MON_BUILTIN="eDP-1"
+
 export MON_PRIMARY="eDP-1"
-export MON_PRIMARY_DOCKED="eDP-1"
 # export MON_SECONDARY=""
-# export MON_SECONDARY_DOCKED=""
+
+export MON_PRIMARY_DOCKED="DP-3"
+export MON_SECONDARY_DOCKED="DP-4"
