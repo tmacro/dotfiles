@@ -3,3 +3,10 @@
 	name = Taylor McKinnon
 [init]
 	defaultBranch = trunk
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[core]
+	excludesfile = /home/tmac/.global_gitignore
