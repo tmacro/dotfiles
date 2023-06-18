@@ -20,14 +20,14 @@ Xcursor.size: 16
 URxvt.saveLine: 100000
 
 ! Set font
-URxvt.font: xft:IBM Plex Mono:size=14:antialias=true
+URxvt.font: xft:IBM Plex Mono:size=10:antialias=true
 
 ! Enable resize ext
 URxvt.perl-ext-common:  resize-font
 
 ! Set DPI for High DPI screens
 ! Multiples of 96
-! Xft.dpi: 192
+Xft.dpi: 120
 
 ! Colors from srcery vim theme
 *.foreground:   #fce8c3
@@ -65,3 +65,4 @@ URxvt.perl-ext-common:  resize-font
 ! white
 *.color7:       #fce8c3
 *.color15:      #918175
+
