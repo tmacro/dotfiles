@@ -1,31 +1,6 @@
- # i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+# i3 config file (v4)
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# font pango: monospace 8
 font pango:DejaVu Sans Mono, monospace 12
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn't scale on retina/hidpi displays.
-
-hide_edge_borders vertical
-
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #8B8C8B #628C27 #ffffff #2e9ef4   #285577
@@ -38,13 +13,13 @@ client.background       #ffffff
 
 workspace_auto_back_and_forth yes
 
+hide_edge_borders vertical
 for_window [class=".*"] border pixel 0
 gaps outer 0
 gaps horizontal 0
 gaps vertical 0
 gaps inner 5
-gaps top 35
-exec --no-startup-id feh --bg-scale ~/.backpack/wallpapers/branch.jpg
+gaps top 0
 
 # Set our modifier keys so they can be easily changed.
 
@@ -65,6 +40,7 @@ floating_modifier $Meta
 
 # start a terminal
 bindsym $Meta+Return exec urxvtc
+bindsym $Mod1+space exec urxvtc
 
 # kill focused window
 bindsym $Meta+k kill
@@ -148,6 +124,8 @@ set $wsweb "Web"
 set $wsslack "Slack"
 set $wssecondary "Secondary"
 set $wshome "Home"
+set $wsnotes "Notes"
+set $wsradio "Radio"
 
 # switch to workspace
 bindsym $Meta+1 workspace $ws1
@@ -166,9 +144,13 @@ bindsym $Meta+c workspace $wsweb
 bindsym $Meta+q workspace $wsslack
 bindsym $Meta+h workspace $wshome
 bindsym $Meta+s workspace $wssecondary
+bindsym $Meta+x workspace $wsnotes
+bindsym $Meta+r workspace $wsradio
 
 # Secondary is a permanent workspace for a second monitor
-workspace "Secondary" output HDMI-A-1
+workspace "Secondary" output HDMI-0
+workspace "Slack" output HDMI-0
+workspace "Radio" output HDMI-0
 
 # move focused container to workspace
 bindsym $Meta+$Mod+1 move container to workspace $ws1
@@ -187,6 +169,8 @@ bindsym $Meta+$Mod+c move container to workspace $wsweb
 bindsym $Meta+$Mod+q move container to workspace $wsslack
 bindsym $Meta+$Mod+s move container to workspace $wssecondary
 bindsym $Meta+$Mod+h move container to workspace $wshome
+bindsym $Meta+$Mod+x move container to workspace $wsnotes
+bindsym $Meta+$Mod+r move container to workspace $wsradio
 
 workspace "Home" output DisplayPort-3
 
@@ -231,29 +215,23 @@ mode "resize" {
 
 bindsym Mod1+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# 		position top
-# }
-
-# Use polybar instead
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill ~/.backpack/background.png
 
-# Some application specific stuff
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id /home/tmac/.toolbelt/bin/volume mute # mute sound
 
-# Autofloat Godots sceen runner
-for_window [instance=Godot_Engine class="Backhaul"] floating enable
+# Screen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl pause
 
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used their favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.i3/config.
-#
-# Please remove the following exec line:
-#######################j################################################
-# exec i3-config-wizard
+# Floating windows
+for_window [class="Blueberry.py" instance="blueberry.py" title="Bluetooth"] floating enable
