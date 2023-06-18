@@ -3,6 +3,8 @@
 # TODO Think of better shell greeting
 set fish_greeting # Disable shell greeting
 
+direnv hook fish | source
+
 set -l config_dir (dirname (status --current-filename))
 
 alias gs "git status"
