@@ -2,7 +2,8 @@
 Description=Bluetooth Tray Daemon
 
 [Service]
-ExecStart=/usr/bin/blueberry
+Type=forking
+ExecStart=/usr/bin/blueberry-tray
 
 [Install]
 WantedBy=default.target

@@ -10,6 +10,7 @@ URxvt*scrollTtyKeypress: true
 
 URxvt.scrollBar: false
 
+URxvt.geometry: 400x400
 
 ! Set cursor
 Xcursor.theme: Numix-HIDPI
