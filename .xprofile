@@ -15,14 +15,7 @@ urxvtd -q -f -o
 # blueberry-tray
 
 # Configure Monitors
-export MON_BUILTIN="eDP-1-1"
-
-export MON_PRIMARY="eDP-1"
-export MON_SECONDARY="DP-1"
-
-#export MON_PRIMARY_DOCKED="DP-3"
-#export MON_SECONDARY_DOCKED="DP-4"
-export MON_PRIMARY_DOCKED="DP-0"
-export MON_SECONDARY_DOCKED="HDMI-0"
+export MON_PRIMARY_DOCKED="DisplayPort-0"
+export MON_SECONDARY_DOCKED="DisplayPort-1"
 
 autorandr --change
