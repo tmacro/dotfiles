@@ -18,6 +18,10 @@ if test -z "$__backpack_env"
 	set -x TD (command today dir show)
 	set -x TN (command today note show)
 
+	# Set GOPATH to something to in ~
+	set -x GOPATH $HOME/.local/share/go
+	set -x PATH $PATH $GOPATH/bin
+
 	# Set sentinel
 	set -x $__backpack_env "1"
 
