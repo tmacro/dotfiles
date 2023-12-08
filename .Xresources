@@ -20,7 +20,7 @@ Xcursor.size: 16
 URxvt.saveLine: 100000
 
 ! Set font
-URxvt.font: xft:IBM Plex Mono:size=10:antialias=true
+URxvt.font: xft:IBM Plex Mono:size=10:antialias=true, xft:Noto Emoji
 
 ! Enable resize ext
 URxvt.perl-ext-common:  resize-font

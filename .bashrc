@@ -3,7 +3,7 @@
 #
 
 # start xorg if DISPLAY isn't set yet
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [ -z "${DISPLAY}" ] && [ -n "${XDG_VTNR}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
 fi
 
