@@ -22,7 +22,7 @@ for_window [class=".*"] border pixel 0
 gaps outer 0
 gaps horizontal 0
 gaps vertical 0
-gaps inner 5
+gaps inner 4
 gaps top 0
 
 # Set our modifier keys so they can be easily changed.
