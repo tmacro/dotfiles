@@ -1,5 +1,9 @@
 # i3 config file (v4)
 
+# Monitors
+set $monprimary "DisplayPort-0"
+set $monsecondary "DisplayPort-1"
+
 font pango:DejaVu Sans Mono, monospace 12
 
 # class                 border  backgr. text    indicator child_border
@@ -148,9 +152,10 @@ bindsym $Meta+x workspace $wsnotes
 bindsym $Meta+r workspace $wsradio
 
 # Secondary is a permanent workspace for a second monitor
-workspace "Secondary" output HDMI-0
-workspace "Slack" output HDMI-0
-workspace "Radio" output HDMI-0
+workspace $wssecondary output $monsecondary
+workspace $wsslack output $monsecondary
+workspace $wsradio output $monsecondary
+workspace $wsnotes output $monsecondary
 
 # move focused container to workspace
 bindsym $Meta+$Mod+1 move container to workspace $ws1
@@ -172,8 +177,7 @@ bindsym $Meta+$Mod+h move container to workspace $wshome
 bindsym $Meta+$Mod+x move container to workspace $wsnotes
 bindsym $Meta+$Mod+r move container to workspace $wsradio
 
-workspace "Home" output DisplayPort-3
-
+workspace $wshome output $monprimary
 
 # Pin windows to workspaces
 # assign [class="^URxvt$" instance="^irssi$"] → 3
