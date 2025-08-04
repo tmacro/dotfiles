@@ -1,0 +1,9 @@
+[Unit]
+Description=Picom composite manager
+
+[Service]
+ExecStartPre=/usr/bin/sleep 3
+ExecStart=/usr/bin/picom
+
+[Install]
+WantedBy=default.target
