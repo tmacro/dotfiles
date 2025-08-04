@@ -130,6 +130,7 @@ set $wssecondary "Secondary"
 set $wshome "Home"
 set $wsnotes "Notes"
 set $wsradio "Radio"
+set $wssteam "Steam"
 
 # switch to workspace
 bindsym $Meta+1 workspace $ws1
@@ -150,6 +151,7 @@ bindsym $Meta+h workspace $wshome
 bindsym $Meta+s workspace $wssecondary
 bindsym $Meta+x workspace $wsnotes
 bindsym $Meta+r workspace $wsradio
+bindsym $Meta+g workspace $wssteam
 
 # Secondary is a permanent workspace for a second monitor
 workspace $wssecondary output $monsecondary
@@ -176,6 +178,7 @@ bindsym $Meta+$Mod+s move container to workspace $wssecondary
 bindsym $Meta+$Mod+h move container to workspace $wshome
 bindsym $Meta+$Mod+x move container to workspace $wsnotes
 bindsym $Meta+$Mod+r move container to workspace $wsradio
+bindsym $Meta+$Mod+g move container to workspace $wssteam
 
 workspace $wshome output $monprimary
 
