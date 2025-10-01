@@ -1,4 +1,8 @@
 !---------------------------------------------urxvtc options
+! Ctrl + Left/Right
+URxvt*keysym.C-Left:  \033[1;5D
+URxvt*keysym.C-Right: \033[1;5C
+
 ! Do not scroll with output
 URxvt*scrollTtyOutput: false
 
@@ -24,6 +28,9 @@ URxvt.font: xft:IBM Plex Mono:size=10:antialias=true
 
 ! Enable resize ext
 URxvt.perl-ext-common:  resize-font
+
+! Set font scaling step
+URxvt.resize-font.step: 1
 
 ! Set DPI for High DPI screens
 ! Multiples of 96
