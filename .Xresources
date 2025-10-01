@@ -34,7 +34,7 @@ URxvt.resize-font.step: 1
 
 ! Set DPI for High DPI screens
 ! Multiples of 96
-Xft.dpi: 120
+Xft.dpi: 200
 
 ! Colors from srcery vim theme
 *.foreground:   #fce8c3
