@@ -216,7 +216,7 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill ~/.backpack/background.png
+exec_always --no-startup-id feh --bg-fill ~/.backpack/backgrounds/cat-left.jpg --bg-fill ~/.backpack/backgrounds/cat-right.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume +2% #increase sound volume
