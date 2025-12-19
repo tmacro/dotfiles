@@ -241,3 +241,5 @@ bindsym XF86AudioStop exec playerctl pause
 for_window [class="Blueberry.py" instance="blueberry.py" title="Bluetooth"] floating enable
 
 exec --no-startup-id workspace $wshome
+
+assign [class="steam" instance="steamwebhelper"] $wssteam
