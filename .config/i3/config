@@ -216,7 +216,7 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill ~/.backpack/backgrounds/cat-left.jpg --bg-fill ~/.backpack/backgrounds/cat-right.jpg
+exec_always --no-startup-id feh --bg-fill ~/.backpack/backgrounds/cat-right.jpg --bg-fill ~/.backpack/backgrounds/cat-left.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume +2% #increase sound volume
@@ -235,3 +235,7 @@ bindsym XF86AudioStop exec playerctl pause
 
 # Floating windows
 for_window [class="Blueberry.py" instance="blueberry.py" title="Bluetooth"] floating enable
+
+exec --no-startup-id workspace $wshome
+
+assign [class="steam" instance="steamwebhelper"] $wssteam
