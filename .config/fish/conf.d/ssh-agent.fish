@@ -7,7 +7,7 @@ if not _ssh_agent_is_started
 end
 
 if test ! -f ~/.ssh/agent.keys
-    echo "No keys configured. Not starting agent."
+    echo "No keys configured. Not starting agent." >&2
     exit 0
 end
 
