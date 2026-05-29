@@ -6,21 +6,21 @@
     "modules-left": ["sway/workspaces"],
     "modules-center": [
         "clock",
-        "custom/weather"
+        "custom/weather",
     ],
     "modules-right": [
+        "tray",
         "wireplumber",
         "wireplumber#level",
+        "battery",
+        "battery#level",
         "custom/backlight-icon",
         "backlight",
         "custom/cpu-icon",
         "custom/cpu",
         "custom/memory-icon",
         "memory",
-        "battery",
-        "battery#level",
-        "tray",
-        "custom/exit"
+        "custom/exit",
     ],
 
     "sway/workspaces": {
