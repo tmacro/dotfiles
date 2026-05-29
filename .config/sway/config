@@ -1,6 +1,7 @@
 include /etc/sway/config.d/*
 
 font pango:DejaVu Sans Mono, monospace 12
+seat seat0 xcursor_theme Numix-HIDPI 16
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #8B8C8B #628C27 #ffffff #2e9ef4   #285577
