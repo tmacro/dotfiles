@@ -1,0 +1,184 @@
+include /etc/sway/config.d/*
+
+font pango:DejaVu Sans Mono, monospace 12
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #8B8C8B #628C27 #ffffff #2e9ef4   #285577
+client.focused_inactive #8B8C8B #375920 #ffffff #484e50   #5f676a
+client.unfocused        #8B8C8B #1F2614 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+workspace_auto_back_and_forth yes
+
+hide_edge_borders vertical
+for_window [class=".*"] border pixel 0
+gaps outer 0
+gaps horizontal 0
+gaps vertical 0
+gaps inner 5
+gaps top 0
+
+input type:keyboard {
+    xkb_options "caps:hyper"
+}
+
+output * background ~/.backpack/backgrounds/lander.png fill
+
+# Set our modifier keys so they can be easily changed.
+
+# Meta - used for application level shortcuts
+set $Meta Mod3
+# Mod - used for wm level shortcuts
+set $Mod Mod1
+
+# start a terminal
+bindsym $Meta+Return exec footclient
+bindsym $Mod+space exec foot
+bindsym KP_Enter exec footclient
+
+# kill focused window
+bindsym $Meta+k kill
+
+# application launcher
+bindsym $Meta+space exec --no-startup-id j4-dmenu-desktop --dmenu="bemenu -i"
+
+# change focus
+bindsym $Meta+Left focus left
+bindsym $Meta+Down focus down
+bindsym $Meta+Up focus up
+bindsym $Meta+Right focus right
+
+# move focused window
+bindsym $Mod+$Meta+Left move left
+bindsym $Mod+$Meta+Down move down
+bindsym $Mod+$Meta+Up move up
+bindsym $Mod+$Meta+Right move right
+
+# split in horizontal orientation
+bindsym $Mod+h split h
+
+# split in vertical orientation
+bindsym $Mod+v split v
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+# General numbered workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Named Workspaces
+set $wseditor "Editor"
+set $wsdev "Dev"
+set $wsweb "Web"
+set $wsslack "Slack"
+set $wssecondary "Secondary"
+set $wshome "Home"
+set $wsnotes "Notes"
+set $wsradio "Radio"
+
+# switch to workspace
+bindsym $Meta+1 workspace $ws1
+bindsym $Meta+2 workspace $ws2
+bindsym $Meta+3 workspace $ws3
+bindsym $Meta+4 workspace $ws4
+bindsym $Meta+5 workspace $ws5
+bindsym $Meta+6 workspace $ws6
+bindsym $Meta+7 workspace $ws7
+bindsym $Meta+8 workspace $ws8
+bindsym $Meta+9 workspace $ws9
+bindsym $Meta+0 workspace $ws10
+bindsym $Meta+e workspace $wseditor
+bindsym $Meta+d workspace $wsdev
+bindsym $Meta+c workspace $wsweb
+bindsym $Meta+q workspace $wsslack
+bindsym $Meta+h workspace $wshome
+bindsym $Meta+s workspace $wssecondary
+bindsym $Meta+x workspace $wsnotes
+bindsym $Meta+r workspace $wsradio
+
+# move focused container to workspace
+bindsym $Meta+$Mod+1 move container to workspace $ws1
+bindsym $Meta+$Mod+2 move container to workspace $ws2
+bindsym $Meta+$Mod+3 move container to workspace $ws3
+bindsym $Meta+$Mod+4 move container to workspace $ws4
+bindsym $Meta+$Mod+5 move container to workspace $ws5
+bindsym $Meta+$Mod+6 move container to workspace $ws6
+bindsym $Meta+$Mod+7 move container to workspace $ws7
+bindsym $Meta+$Mod+8 move container to workspace $ws8
+bindsym $Meta+$Mod+9 move container to workspace $ws9
+bindsym $Meta+$Mod+0 move container to workspace $ws10
+bindsym $Meta+$Mod+e move container to workspace $wseditor
+bindsym $Meta+$Mod+d move container to workspace $wsdev
+bindsym $Meta+$Mod+c move container to workspace $wsweb
+bindsym $Meta+$Mod+q move container to workspace $wsslack
+bindsym $Meta+$Mod+s move container to workspace $wssecondary
+bindsym $Meta+$Mod+h move container to workspace $wshome
+bindsym $Meta+$Mod+x move container to workspace $wsnotes
+bindsym $Meta+$Mod+r move container to workspace $wsradio
+
+# pin workspaces to outputs
+workspace "Home" output eDP-1
+#workspace "Secondary" output HDMI-0
+#workspace "Slack" output HDMI-0
+#workspace "Radio" output HDMI-0
+
+# reload the configuration file
+bindsym $Meta+Shift+c reload
+
+# restart inplace
+bindsym $Meta+Shift+r restart
+
+# exit
+bindsym $Meta+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes' 'swaymsg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod1+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Mod1+r mode "default"
+}
+
+bindsym Mod1+r mode "resize"
+
+exec_always --no-startup-id /usr/bin/blueberry-tray
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/tmac/.toolbelt/bin/volume -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id /home/tmac/.toolbelt/bin/volume mute # mute sound
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5%- # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl pause
+
+# Floating windows
+for_window [class="Blueberry.py" instance="blueberry.py" title="Bluetooth"] floating enable

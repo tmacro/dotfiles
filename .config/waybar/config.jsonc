@@ -1,0 +1,139 @@
+{
+    "position": "top",
+    // "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 0, // Gaps between modules (4px)
+    // "margin": "0 0 0 0",
+    "modules-left": ["sway/workspaces"],
+    "modules-center": [
+        "clock",
+        "custom/weather"
+    ],
+    "modules-right": [
+        "wireplumber",
+        "wireplumber#level",
+        "custom/backlight-icon",
+        "backlight",
+        "custom/cpu-icon",
+        "custom/cpu",
+        "custom/memory-icon",
+        "memory",
+        "battery",
+        "battery#level",
+        "tray",
+        "custom/exit"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+
+    "clock": {
+        // "timezone": "America/New_York",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a %b %e %Y %I:%M:%S}"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "return-type": "json"
+    },
+
+    "wireplumber": {
+        "format": "",
+        "format-muted": "",
+        "on-click": "$HOME/.toolbelt/bin/volume mute"
+    },
+
+    "wireplumber#level": {
+        "format": "{volume}%",
+        "format-muted": "{volume}%",
+        "on-click": "pwvucontrol",
+        "format-icons": ["", "", "", ""]
+    },
+
+    "custom/cpu-icon": {
+        "format":"",
+        "tooltip": false
+    },
+
+    "custom/cpu": {
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/scripts/cpu.py",
+        "interval": 1,
+        "return-type": "json"
+    },
+
+    "cpu": {
+        "interval": 1.0,
+        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}",
+        "format-icons": [
+            "<span color='#69ff94'>⣀</span>", // green
+            "<span color='#69ff94'>⣄</span>", // green
+            "<span color='#2aa9ff'>⣤</span>", // blue
+            "<span color='#2aa9ff'>⣴</span>", // blue
+            "<span color='#ffffa5'>⣶</span>", // yellow
+            "<span color='#ff9977'>⣷</span>", // yellow
+            "<span color='#dd532e'>⣿</span>" // red
+        ]
+    },
+
+    "custom/memory-icon": {
+        "format":"",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{used} GiB | {avail} GiB"
+    },
+
+    "custom/backlight-icon": {
+        "format":"",
+        "tooltip": false,
+        "on-click": "$HOME/.config/waybar/scripts/toggle-brightness.py"
+    },
+
+    "backlight": {
+        "format": "{}%",
+        "on-click": "$HOME/.config/waybar/scripts/toggle-brightness.py"
+    },
+
+    "battery": {
+        "states": {
+            "full": 100,
+            "nominal": 98,
+            "half": 50,
+            "warning": 25,
+            "critical": 5
+        },
+        "format-plugged": "",
+        "format-charging": "",
+        "format-charging-full": "",
+        "format-discharging-full": "",
+        "format-discharging-nominal": "",
+        "format-discharging-half": "",
+        "format-discharging-warning": "",
+        "format-discharging-critical": ""
+    },
+
+    "battery#level": {
+        "format": "{}%"
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+
+    "custom/exit": {
+        "format": "",
+        "on-click": "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes' 'swaymsg exit'"
+    }
+}

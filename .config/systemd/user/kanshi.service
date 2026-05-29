@@ -1,0 +1,15 @@
+[Unit]
+Description=Dynamic output configuration for Wayland compositors
+Documentation=man:kanshi(1)
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2s
+RestartSteps=5
+RestartMaxDelaySec=10s
+ExecStart=/usr/bin/kanshi
+
+[Install]
+WantedBy=sway-session.target

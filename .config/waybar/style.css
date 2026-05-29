@@ -1,0 +1,237 @@
+* {
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+window#waybar {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: 'IBM Plex Mono', 'Font Awesome 7 Free';
+    background-color: transparent;
+    border-bottom: 0px;
+    color: #ebdbb2;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+.modules-right {
+    margin: 0 5px 0 0;
+}
+
+.modules-center {
+    margin: 0 0 0 0;
+}
+
+.modules-left {
+    margin: 0 0 0 5px;
+}
+
+button {
+    border: none;
+}
+
+#workspaces {
+    background-color: #383c4a;;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ebdbb2;
+    border-radius: 0;
+}
+
+#workspaces button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#workspaces button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#workspaces button:hover {
+    color: black;
+}
+
+#workspaces button.focused {
+    background-color: white;
+    color: black;
+    /* box-shadow: inset 0 -3px #ffffff; */
+}
+
+#workspaces button.urgent {
+    background-color: #b16286;
+}
+
+#idle_inhibitor,
+#cava,
+#scratchpad,
+#mode,
+#window,
+#clock,
+#battery,
+#wireplumber,
+#wireplumber.level,
+#tray,
+#mpris,
+#custom-weather,
+#custom-cpu-icon,
+#custom-cpu,
+#custom-memory-icon,
+#memory,
+#custom-backlight-icon,
+#backlight,
+#custom-exit,
+#load {
+    padding: 0 10px;
+    background-color: #383c4a;;
+    color: #ffffff;
+}
+
+#battery,
+#wireplumber,
+#wireplumber.level,
+#tray,
+#custom-cpu-icon,
+#custom-memory-icon,
+#custom-backlight-icon,
+#custom-exit,
+#load {
+    margin: 0px 0px 0px 5px
+}
+
+#custom-cpu-icon,
+#custom-memory-icon,
+#custom-backlight-icon,
+#clock {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#custom-cpu,
+#memory,
+#backlight,
+#custom-weather {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin: 0px 0px 0px 0px;
+}
+
+#wireplumber,
+#battery {
+    min-width: 18px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#wireplumber.level,
+#battery.level {
+    min-width: 32px;
+    margin: 0px 0px 0px 0px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#backlight {
+    min-width: 32px;
+}
+
+#battery.discharging:not(.level), #battery.plugged:not(.level)  {
+    background-color: #6d8895;
+    color: #383c4a;
+}
+
+#battery.full:not(.level) {
+    background-color: #519f50;
+    color: #383c4a;
+}
+
+#battery.charging:not(.level){
+    background-color: #ffb413;
+    /* background-color: #98971a; */
+    color: #383c4a;
+}
+
+
+/* #battery.level.charging {
+    background-color: #98971a;
+    color: #282828;
+} */
+
+@keyframes blink {
+    to {
+        background-color: #383c4a;
+        color: #ebdbb2;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #cc241d;
+    color: #ebdbb2;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#tray menu {
+    font-family: sans-serif;
+}
+
+#wireplumber:not(.level) {
+    background-color: #BE78D1;
+    color: #383c4a;
+}
+
+#wireplumber.muted:not(.level) {
+    background-color: #B48EAD;
+    color: #383c4a;
+}
+
+#custom-cpu-icon {
+    background-color: #5573a3;
+    color: #383c4a;
+}
+
+#custom-memory-icon {
+    background-color: #98bc37;
+    color: #383c4a;
+}
+
+#custom-backlight-icon {
+    background-color: #E57C46;
+    color: #383c4a;
+}
+
+#custom-exit {
+    background-color: #da4939;
+}

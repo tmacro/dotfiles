@@ -1,0 +1,15 @@
+[Unit]
+Description=Dynamic output configuration for Wayland compositors
+Documentation=man:kanshi(1)
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2s
+RestartSteps=5
+RestartMaxDelaySec=10s
+ExecStart=/usr/bin/waybar -c /home/tmac/.config/waybar/config.jsonc -s /home/tmac/.config/waybar/style.css
+
+[Install]
+WantedBy=sway-session.target

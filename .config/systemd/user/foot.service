@@ -1,0 +1,14 @@
+[Unit]
+Description=Terminal Emulator
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2s
+RestartSteps=5
+RestartMaxDelaySec=10s
+ExecStart=/usr/bin/foot --server
+
+[Install]
+WantedBy=sway-session.target

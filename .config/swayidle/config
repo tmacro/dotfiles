@@ -1,0 +1,3 @@
+#timeout 300 'waylock -fork-on-lock -init-color 0x000000 -input-color 0x005577 -fail-color 0xcc3333'
+timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+#before-sleep 'waylock -fork-on-lock -init-color 0x000000 -input-color 0x005577 -fail-color 0xcc3333'
