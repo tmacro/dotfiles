@@ -2,9 +2,9 @@
 # ~/.bashrc
 #
 
-# start xorg if DISPLAY isn't set yet
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+# start sway if it isn't running
+if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+    exec sway
 fi
 
 # If not running interactively, don't do anything
