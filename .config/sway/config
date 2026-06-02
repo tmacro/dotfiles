@@ -128,10 +128,11 @@ bindsym $Meta+$Mod+x move container to workspace $wsnotes
 bindsym $Meta+$Mod+r move container to workspace $wsradio
 
 # pin workspaces to outputs
-workspace "Home" output eDP-1
-#workspace "Secondary" output HDMI-0
-#workspace "Slack" output HDMI-0
-#workspace "Radio" output HDMI-0
+
+workspace "Home" output "LG Electronics LG HDR 4K 0x0004DE04"  "eDP-1"
+workspace "Secondary" output "Lenovo Group Limited P24q-10 U4P00001"
+workspace "Slack" output "Lenovo Group Limited P24q-10 U4P00001"
+workspace "Radio" output "Lenovo Group Limited P24q-10 U4P00001"
 
 # reload the configuration file
 bindsym $Meta+Shift+c reload
