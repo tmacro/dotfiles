@@ -1,11 +1,56 @@
-# Builtin
-profile "mobile" {
-    output eDP-1 mode 2256x1504 position 0,0 scale 1.2
+
+output "Lenovo Group Limited P24q-10 U4P00001" {
+    mode 2560x1440
+    position 0,0
+    scale 1.1
+    transform 90
+    alias $DESK_LEFT
 }
 
-# Desktop docking station
-profile "docked" {
-    output "Lenovo Group Limited P24q-10 U4P00001" mode 2560x1440 position 0,0 scale 1.1 transform 90
-    output "LG Electronics LG HDR 4K 0x0004DE04" mode 3840x2160 position 1307,0 scale 1.0 transform normal
-    output eDP-1 mode 2256x1504 position 5147,0 scale 1.2 transform normal
+output "LG Electronics LG HDR 4K 0x0004DE04" {
+    mode 3840x2160
+    position 1307,0
+    scale 1.0
+    transform normal
+    alias $DESK_MAIN
 }
+
+output "BOE 0x0BCA Unknown" {
+    mode 2256x1504
+    scale 1.2 
+    transform normal
+    alias $INT_FRAME
+}
+
+output "Sharp Corporation 0x14FA Unknown" {
+    mode 3840x2400
+    scale 2.0 
+    transform normal
+    alias $INT_XPS
+}
+
+profile "desktop" {
+    output $DESK_MAIN enable
+    output $DESK_LEFT enable
+}
+
+profile "frankenwork-mobile" {
+    output $INT_FRAME enable position 0,0
+}
+
+profile "frankenwork-docked" {
+    output $DESK_MAIN enable
+    output $DESK_LEFT enable
+    output $INT_FRAME enable position 5147,0
+}
+
+profile "kennx-mobile" {
+    output $INT_XPS enable position 0,0
+}
+
+profile "kennx-docked" {
+    output $DESK_MAIN enable
+    output $DESK_LEFT enable
+    output $INT_XPS enable position 5147,0
+}
+
