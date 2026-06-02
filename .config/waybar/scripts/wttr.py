@@ -8,6 +8,8 @@ from pathlib import Path
 import requests
 
 DATA_PATH = Path("~/.config/waybar/scripts/weather.json").expanduser().resolve()
+MIN_REFRESH_AGE = timedelta(minutes=30)
+MAX_CACHE_AGE = timedelta(hours=2)
 
 WEATHER_CODES = {
     "113": "☀️",
@@ -63,26 +65,28 @@ WEATHER_CODES = {
 
 weather = None
 updated = None
-for i in range(3):
-    try:
-        weather = requests.get("https://wttr.in/94606?format=j1").json()
-        updated = datetime.now()
-    except Exception as e:
-        print(e)
+
+if DATA_PATH.exists():
+    with open(DATA_PATH) as f:
+        cached_weather = json.load(f)
+    cache_updated = datetime.fromisoformat(cached_weather["updated"])
+    if datetime.now() - cache_updated < MAX_CACHE_AGE:
+        weather = cached_weather["weather"]
+        updated = cache_updated
+
+if weather is None or (
+    updated is not None and datetime.now() - updated > MIN_REFRESH_AGE
+):
+    for i in range(3):
+        try:
+            weather = requests.get("https://wttr.in/94606?format=j1").json()
+            updated = datetime.now()
+        except Exception as e:
+            print(e)
 
 if weather is None:
     print("error refreshing weather", file=sys.stderr)
-    if DATA_PATH.exists():
-        with open(DATA_PATH) as f:
-            saved = json.load(f)
-        updated = datetime.fromisoformat(saved["updated"])
-        if datetime.now() - updated > timedelta(hours=6):
-            print("saved weather too old")
-            exit(1)
-        weather = saved["weather"]
-    else:
-        print("no saved weather", file=sys.stderr)
-        exit(1)
+    exit(1)
 else:
     with open(DATA_PATH, "w") as f:
         json.dump(
